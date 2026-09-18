@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Eco Lifestyle Agent — Simulation</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green-dark:#1a4731;--green-mid:#2d6a4f;--green-light:#52b788;
+  --green-pale:#d8f3dc;--green-xpale:#f0faf2;
+  --text:#1b2d22;--muted:#5a7a65;--border:#c8e6c9;--bg:#f7fdf8;
+  --white:#ffffff;--radius:14px;--shadow:0 2px 14px rgba(44,106,79,.10);
+}
+body{font-family:-apple-system,"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
+
+/* Top bar */
+header{background:var(--green-dark);color:#e8f5e9;padding:14px 24px;display:flex;align-items:center;gap:14px;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.logo-icon{font-size:1.8rem}
+.logo-title{font-size:1.15rem;font-weight:700;color:#a5d6a7}
+.logo-sub{font-size:.72rem;color:#81c784;margin-top:1px}
+.status-badge{margin-left:auto;background:#43a047;color:#fff;font-size:.72rem;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:.4px}
+
+/* Layout */
+.shell{display:flex;flex:1;height:calc(100vh - 63px);overflow:hidden}
+
+/* Sidebar */
+aside{width:240px;min-width:240px;background:var(--green-dark);color:#e8f5e9;display:flex;flex-direction:column;overflow-y:auto;padding:16px 12px}
+.s-label{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#81c784;margin:14px 0 8px}
+.topic-item{font-size:.78rem;color:#c8e6c9;padding:5px 8px;border-radius:6px;cursor:default;line-height:1.4;margin-bottom:2px}
+.topic-item.active{background:rgba(255,255,255,.18);color:#fff;font-weight:600}
+.topic-item::before{content:"🌱 "}
+.quick-btn{display:block;width:100%;text-align:left;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:#c8e6c9;font-size:.77rem;padding:7px 9px;border-radius:8px;cursor:pointer;transition:background .15s;margin-bottom:5px;line-height:1.35}
+.quick-btn:hover{background:rgba(255,255,255,.16);color:#fff}
+.quick-btn.active{background:rgba(255,255,255,.22);color:#fff;border-color:rgba(255,255,255,.3)}
+
+/* Chat area */
+main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+#chatWindow{flex:1;overflow-y:auto;padding:24px 20px 10px;display:flex;flex-direction:column;gap:20px;scroll-behavior:smooth}
+#chatWindow::-webkit-scrollbar{width:5px}
+#chatWindow::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+
+/* Bubbles */
+.msg-row{display:flex;align-items:flex-start;gap:12px;animation:fadeUp .28s ease forwards;opacity:0}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.msg-row.user{flex-direction:row-reverse;align-self:flex-end;max-width:68%}
+.msg-row.bot{align-self:flex-start;max-width:84%}
+.avatar{width:36px;height:36px;min-width:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;background:var(--green-pale)}
+.msg-row.user .avatar{background:var(--green-mid)}
+.bubble{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);border-top-left-radius:4px;padding:13px 16px;font-size:.875rem;line-height:1.7;box-shadow:var(--shadow);word-break:break-word}
+.msg-row.user .bubble{background:var(--green-mid);color:#fff;border:none;border-top-right-radius:4px;border-top-left-radius:var(--radius)}
+.bubble p{margin-bottom:7px}.bubble p:last-child{margin-bottom:0}
+.bubble strong{font-weight:700;color:var(--green-dark)}
+.msg-row.user .bubble strong{color:#c8f7c5}
+.bubble ul{padding-left:18px;margin:5px 0 7px}
+.bubble li{margin-bottom:4px}
+.bubble code{background:var(--green-xpale);border:1px solid var(--border);border-radius:4px;padding:1px 6px;font-size:.82em;font-family:"Courier New",monospace}
+.sources-tag{margin-top:10px;padding-top:8px;border-top:1px solid var(--border);font-size:.72rem;color:var(--muted)}
+.src-chip{display:inline-block;background:var(--green-xpale);border:1px solid var(--border);border-radius:4px;padding:1px 7px;margin:2px 3px 2px 0;font-size:.7rem}
+.rag-badge{display:inline-block;background:#e8f5e9;border:1px solid #a5d6a7;color:var(--green-mid);font-size:.68rem;font-weight:700;padding:2px 9px;border-radius:10px;margin-bottom:9px;letter-spacing:.3px}
+
+/* Typing indicator */
+.typing-row{display:flex;align-items:flex-start;gap:12px;align-self:flex-start;padding:0 0 4px}
+.typing-row .bubble{padding:13px 18px;display:flex;gap:6px;align-items:center}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--green-light);animation:bounce 1.1s infinite}
+.dot:nth-child(2){animation-delay:.18s}.dot:nth-child(3){animation-delay:.36s}
+@keyframes bounce{0%,60%,100%{transform:translateY(0);opacity:.7}30%{transform:translateY(-7px);opacity:1}}
+.hidden{display:none!important}
+
+/* Input bar */
+.input-bar{padding:12px 20px 16px;background:var(--white);border-top:1px solid var(--border)}
+.input-wrap{display:flex;gap:10px;align-items:center;background:var(--bg);border:2px solid var(--border);border-radius:var(--radius);padding:9px 14px;transition:border-color .2s}
+.input-wrap:focus-within{border-color:var(--green-light);background:var(--white)}
+.input-wrap input{flex:1;border:none;background:transparent;outline:none;font-size:.9rem;font-family:inherit;color:var(--text)}
+.input-wrap input::placeholder{color:#9ebeaa}
+.send-btn{width:36px;height:36px;background:var(--green-mid);border:none;border-radius:9px;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+.send-btn:hover{background:var(--green-dark)}
+.send-btn:disabled{background:#a5c9a5;cursor:default}
+.meta-bar{display:flex;justify-content:space-between;padding:4px 2px 0;font-size:.7rem;color:var(--muted)}
+
+/* RAG info panel */
+.rag-panel{padding:8px 20px;background:#f0faf2;border-top:1px solid var(--border);font-size:.71rem;color:var(--muted);display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+.rag-panel b{color:var(--green-mid)}
+
+/* Progress */
+.progress-wrap{height:3px;background:var(--border)}
+.progress-bar{height:3px;background:var(--green-light);width:0;transition:width .45s ease}
+
+aside::-webkit-scrollbar{width:4px}
+aside::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);border-radius:2px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-icon">🌿</div>
+  <div>
+    <div class="logo-title">EcoAgent</div>
+    <div class="logo-sub">RAG-Powered Sustainable Living AI</div>
+  </div>
+  <div class="status-badge">&#9679; SIMULATION</div>
+</header>
+
+<div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+
+<div class="shell">
+  <aside>
+    <div class="s-label">Knowledge Base (10 topics)</div>
+    <div class="topic-item" id="t0">Reducing Plastic Use</div>
+    <div class="topic-item" id="t1">Home Energy &amp; Renewables</div>
+    <div class="topic-item" id="t2">Sustainable Travel</div>
+    <div class="topic-item" id="t3">Recycling &amp; Composting</div>
+    <div class="topic-item" id="t4">Sustainable Diet &amp; Food</div>
+    <div class="topic-item" id="t5">Eco Products &amp; Shopping</div>
+    <div class="topic-item" id="t6">Water Conservation</div>
+    <div class="topic-item" id="t7">Government Schemes &amp; Grants</div>
+    <div class="topic-item" id="t8">Biodiversity &amp; Gardening</div>
+    <div class="topic-item" id="t9">Personal Carbon Footprint</div>
+
+    <div class="s-label" style="margin-top:18px">Demo Questions</div>
+    <button class="quick-btn" id="q0">&#9851; Reduce plastic at home</button>
+    <button class="quick-btn" id="q1">&#128690; Eco-friendly travel</button>
+    <button class="quick-btn" id="q2">&#9728; UK solar panel grants</button>
+    <button class="quick-btn" id="q3">&#129163; Start composting</button>
+    <button class="quick-btn" id="q4">&#129385; High carbon footprint foods</button>
+  </aside>
+
+  <main>
+    <div id="chatWindow">
+      <div class="msg-row bot" style="opacity:1">
+        <div class="avatar">&#127807;</div>
+        <div class="bubble">
+          <div class="rag-badge">&#9889; RAG PIPELINE ACTIVE &mdash; 22 chunks indexed</div>
+          <p>Hello! I&rsquo;m <strong>EcoAgent</strong>, your AI guide to sustainable living. &#127807;</p>
+          <p>This simulation shows the real RAG pipeline: your question is <strong>embedded &rarr; matched against 22 indexed chunks &rarr; top-3 retrieved &rarr; answer generated</strong>.</p>
+          <p>Click any <strong>demo question</strong> in the sidebar to see it in action &mdash; or type your own below!</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="typingRow" class="typing-row hidden" style="padding:0 20px 6px">
+      <div class="avatar">&#127807;</div>
+      <div class="bubble"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+    </div>
+
+    <div class="rag-panel">
+      <span>&#128269; <b>Vector Store:</b> 22 chunks &middot; FAISS/NumPy</span>
+      <span>&#129504; <b>Embeddings:</b> all-MiniLM-L6-v2 (384-dim)</span>
+      <span>&#128218; <b>Top-K:</b> 3 chunks per query</span>
+      <span>&#129302; <b>LLM:</b> GPT-3.5-turbo / Ollama / Fallback</span>
+    </div>
+
+    <div class="input-bar">
+      <div class="input-wrap">
+        <input id="userInput" type="text" placeholder="Ask about eco-friendly living&hellip;" maxlength="200"/>
+        <button class="send-btn" id="sendBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+      <div class="meta-bar">
+        <span id="ragInfo">Ready &mdash; 10 topics loaded &middot; 22 chunks</span>
+        <span id="timeInfo"></span>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+const DEMOS = [
+  {
+    q: "How can I reduce plastic use at home?",
+    sources: ["01_reduce_plastic","04_recycling_waste"],
+    topic: [0,3], chunks:3, ms:312,
+    answer: `<div class="rag-badge">&#128196; 3 chunks retrieved &middot; 2 sources matched</div>
+<p><strong>Reducing plastic at home</strong> is one of the highest-impact daily actions you can take. Here are the most effective swaps:</p>
+<ul>
+<li>&#128717; <strong>Shopping:</strong> Switch to reusable cotton or jute bags &mdash; saves ~700 plastic bags per year.</li>
+<li>&#128167; <strong>Bottles:</strong> A reusable stainless-steel bottle eliminates ~156 single-use bottles per year.</li>
+<li>&#129366; <strong>Bathroom:</strong> Shampoo bars, bamboo toothbrushes, and a safety razor generate almost zero plastic waste.</li>
+<li>&#127857; <strong>Kitchen:</strong> Replace cling wrap with beeswax wraps or silicone lids. Use glass containers for storage.</li>
+<li>&#9749; <strong>On the go:</strong> A reusable coffee cup saves 500+ disposable cups per year.</li>
+</ul>
+<p>For soft plastics (bread bags, cereal bags), most UK supermarkets &mdash; <strong>Tesco, Sainsbury&rsquo;s, Waitrose</strong> &mdash; now have in-store collection points.</p>
+<p>&#127963; <strong>Government:</strong> The UK <strong>Deposit Return Scheme (DRS)</strong> is rolling out &mdash; you&rsquo;ll get money back when returning drinks bottles!</p>
+<p>&#9989; <strong>Quick Win today:</strong> Put a reusable bag by your front door so you never forget it on a shopping trip.</p>`
+  },
+  {
+    q: "What eco-friendly travel options are available?",
+    sources: ["03_sustainable_travel","06_eco_products"],
+    topic: [2,5], chunks:3, ms:287,
+    answer: `<div class="rag-badge">&#128196; 3 chunks retrieved &middot; 2 sources matched</div>
+<p>Transport is one of your biggest carbon levers. Carbon footprint by mode of travel <em>(per passenger-km)</em>:</p>
+<ul>
+<li>&#127939; <strong>Walking / Cycling:</strong> 0 g CO&#8322;/km &mdash; best for short trips</li>
+<li>&#128642; <strong>Eurostar train:</strong> 6 g CO&#8322;/km vs 195 g for a long-haul flight</li>
+<li>&#9889; <strong>Electric car (UK grid):</strong> ~53 g CO&#8322;/km &mdash; 3&times; cleaner than petrol</li>
+<li>&#128652; <strong>Coach (National Express):</strong> ~27 g CO&#8322;/km &mdash; very efficient</li>
+</ul>
+<p><strong>Daily tips:</strong> Working from home saves ~4.4 kg CO&#8322; per day. Cycling or walking trips under 3 miles is the best single habit change.</p>
+<p>&#128664; <strong>EV Grants:</strong> UK <strong>Workplace Charging Scheme</strong> gives up to &pound;350. US <strong>IRA gives up to $7,500</strong> in EV tax credits.</p>
+<p>&#9992; <strong>Fly less:</strong> One transatlantic return flight = ~1.6 tonnes CO&#8322; &mdash; the single highest-impact action you can take.</p>
+<p>&#9989; <strong>Quick Win today:</strong> Plan your next long trip by train &mdash; Trainline often has advance fares 60&ndash;70% cheaper than standard.</p>`
+  },
+  {
+    q: "What UK government grants are available for solar panels?",
+    sources: ["02_energy_saving","08_government_schemes"],
+    topic: [1,7], chunks:3, ms:341,
+    answer: `<div class="rag-badge">&#128196; 3 chunks retrieved &middot; 2 sources matched</div>
+<p>Several excellent UK schemes make solar panels and home energy upgrades more affordable:</p>
+<ul>
+<li>&#9728; <strong>Smart Export Guarantee (SEG):</strong> Energy suppliers pay you for surplus solar electricity exported to the grid &mdash; typically 3&ndash;15p/kWh. Free ongoing income once panels are installed.</li>
+<li>&#127968; <strong>ECO4 Scheme:</strong> Free solar PV, insulation, and heating upgrades for low-income or fuel-poor households. Apply via your local council or energy supplier.</li>
+<li>&#128293; <strong>Boiler Upgrade Scheme (BUS):</strong> &pound;7,500 grant toward an air-source heat pump &mdash; pairs perfectly with solar.</li>
+<li>&#127961; <strong>Home Upgrade Grant (HUG2):</strong> For off-gas-grid low-income homes &mdash; covers insulation + solar PV.</li>
+</ul>
+<p><strong>Solar stats:</strong> A typical 4kWp system generates ~3,400 kWh/year, covering ~80% of household electricity and saving &pound;600&ndash;&pound;1,000/year. Payback is typically 7&ndash;10 years.</p>
+<p>&#127482;&#127480; <strong>US residents:</strong> The IRA&rsquo;s <strong>Residential Clean Energy Credit</strong> gives a <strong>30% federal tax credit</strong> on solar installations through 2032.</p>
+<p>&#9989; <strong>Quick Win today:</strong> Check eligibility for ECO4 at gov.uk &mdash; it&rsquo;s completely free for qualifying households.</p>`
+  },
+  {
+    q: "How do I start composting at home?",
+    sources: ["04_recycling_waste","09_biodiversity_garden"],
+    topic: [3,8], chunks:3, ms:298,
+    answer: `<div class="rag-badge">&#128196; 3 chunks retrieved &middot; 2 sources matched</div>
+<p>Composting diverts food waste from landfill, where it produces methane (28&times; more potent than CO&#8322;). Here&rsquo;s how to start:</p>
+<ul>
+<li>&#128230; <strong>Get a bin:</strong> An open-bottomed compost bin in a corner of the garden. Many councils sell them at a discount (~&pound;5&ndash;&pound;8).</li>
+<li>&#9989; <strong>Add:</strong> Fruit/veg peelings, tea bags, eggshells, grass clippings, torn-up cardboard, newspaper, hair clippings.</li>
+<li>&#10060; <strong>Avoid:</strong> Meat, fish, dairy, cooked food, and diseased plants.</li>
+<li>&#9878; <strong>Balance:</strong> Aim for ~50% &ldquo;greens&rdquo; (wet, nitrogen-rich) and ~50% &ldquo;browns&rdquo; (dry, carbon-rich). This prevents it going slimy or too dry.</li>
+</ul>
+<p>&#129163; <strong>No garden?</strong> A <strong>wormery</strong> or <strong>Bokashi system</strong> works brilliantly in a flat &mdash; Bokashi even handles meat and dairy!</p>
+<p>&#129428; <strong>Bonus wildlife tip:</strong> An open compost heap is one of the best wildlife habitats &mdash; slow worms, frogs, and hedgehogs love them.</p>
+<p>&#9989; <strong>Quick Win today:</strong> Put a small caddy on your kitchen counter and start collecting peelings today.</p>`
+  },
+  {
+    q: "Which foods have the highest carbon footprint?",
+    sources: ["05_sustainable_food","10_carbon_footprint"],
+    topic: [4,9], chunks:3, ms:276,
+    answer: `<div class="rag-badge">&#128196; 3 chunks retrieved &middot; 2 sources matched</div>
+<p>Food accounts for ~26% of global GHG emissions. Here&rsquo;s the carbon footprint by food type <em>(kg CO&#8322;e per kg of food)</em>:</p>
+<ul>
+<li>&#129385; <strong>Beef: 60 kg CO&#8322;e/kg</strong> &mdash; by far the highest</li>
+<li>&#128017; <strong>Lamb: 24 kg CO&#8322;e/kg</strong></li>
+<li>&#129472; <strong>Cheese: 21 kg CO&#8322;e/kg</strong></li>
+<li>&#128020; <strong>Chicken: 6 kg CO&#8322;e/kg</strong></li>
+<li>&#127807; <strong>Lentils: 0.9 kg CO&#8322;e/kg</strong> &mdash; 67&times; less than beef!</li>
+<li>&#129371; <strong>Oat milk: 0.9 kg CO&#8322;e/kg</strong> vs cow&rsquo;s milk at 3.2 kg</li>
+</ul>
+<p><strong>Biggest impact:</strong> Moving to a fully plant-based diet saves ~1.5 tonnes CO&#8322;e/year. Even just replacing one beef meal per week saves ~1,300 kg CO&#8322;e/year.</p>
+<p>&#128722; <strong>Shopping tips:</strong> Buy seasonal and local produce, choose MSC-certified seafood, and look for Rainforest Alliance labels on coffee and cocoa.</p>
+<p>&#9989; <strong>Quick Win today:</strong> Try a &ldquo;Meat-Free Monday&rdquo; &mdash; swap beef for lentils or chickpeas in your favourite recipe.</p>`
+  }
+];
+
+let busy = false;
+const chatWindow  = document.getElementById('chatWindow');
+const typingRow   = document.getElementById('typingRow');
+const ragInfo     = document.getElementById('ragInfo');
+const timeInfo    = document.getElementById('timeInfo');
+const progressBar = document.getElementById('progressBar');
+const userInput   = document.getElementById('userInput');
+const sendBtn     = document.getElementById('sendBtn');
+
+function hl(arr){
+  document.querySelectorAll('.topic-item').forEach(el=>el.classList.remove('active'));
+  arr.forEach(i=>{const el=document.getElementById('t'+i);if(el)el.classList.add('active');});
+}
+function hlQ(i){
+  document.querySelectorAll('.quick-btn').forEach(el=>el.classList.remove('active'));
+  const el=document.getElementById('q'+i);if(el)el.classList.add('active');
+}
+
+function addMsg(role,html){
+  const row=document.createElement('div');
+  row.className='msg-row '+role;
+  row.innerHTML=(role==='user')
+    ?`<div class="avatar">&#128100;</div><div class="bubble">${html}</div>`
+    :`<div class="avatar">&#127807;</div><div class="bubble">${html}</div>`;
+  chatWindow.appendChild(row);
+  chatWindow.scrollTop=chatWindow.scrollHeight;
+}
+
+function addBot(html,sources){
+  const chips=sources.map(s=>`<span class="src-chip">${s.replace(/_/g,' ')}</span>`).join('');
+  addMsg('bot',html+`<div class="sources-tag">&#128218; Sources: ${chips}</div>`);
+}
+
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+
+async function runDemo(idx){
+  if(busy)return;
+  busy=true; sendBtn.disabled=true;
+  const d=DEMOS[idx];
+  hlQ(idx);
+  addMsg('user',d.q);
+
+  ragInfo.textContent='&#128269; Embedding query & searching vector store\u2026';
+  timeInfo.textContent='';
+  progressBar.style.width='28%';
+  typingRow.classList.remove('hidden');
+  chatWindow.scrollTop=chatWindow.scrollHeight;
+
+  await sleep(650);
+  progressBar.style.width='62%';
+  ragInfo.textContent=`&#129504; Retrieved ${d.chunks} chunks \u2014 generating answer\u2026`;
+
+  await sleep(950);
+  progressBar.style.width='96%';
+  await sleep(180);
+  typingRow.classList.add('hidden');
+  progressBar.style.width='0';
+
+  addBot(d.answer, d.sources);
+  hl(d.topic);
+
+  ragInfo.textContent=`\u2705 Done in ${d.ms}ms \u2014 ${d.chunks} chunks from ${d.sources.length} sources`;
+  timeInfo.textContent=`\u26a1 ${d.ms}ms`;
+  busy=false; sendBtn.disabled=false;
+}
+
+async function runCustom(text){
+  text=text.trim();
+  if(!text||busy)return;
+  busy=true; sendBtn.disabled=true;
+  userInput.value='';
+
+  addMsg('user',text);
+  ragInfo.textContent='&#128269; Searching vector store\u2026';
+  progressBar.style.width='40%';
+  typingRow.classList.remove('hidden');
+  chatWindow.scrollTop=chatWindow.scrollHeight;
+
+  await sleep(700);
+  progressBar.style.width='80%';
+  ragInfo.textContent='&#129302; Generating eco-lifestyle guidance\u2026';
+  await sleep(950);
+  progressBar.style.width='0';
+  typingRow.classList.add('hidden');
+
+  addBot(`<div class="rag-badge">&#128196; Simulation mode</div>
+<p>In the live server your question would be <strong>embedded &rarr; matched against all 22 chunks &rarr; top-3 retrieved &rarr; LLM answer generated</strong>.</p>
+<p>Try one of the <strong>5 demo questions</strong> in the sidebar to see full simulated responses with real retrieved context!</p>
+<p>&#9989; <strong>To run live:</strong> <code>python main.py</code> &rarr; open <strong>http://localhost:8000</strong></p>`,
+    ['simulation_mode']);
+
+  ragInfo.textContent='Ready \u2014 10 topics loaded \u00b7 22 chunks';
+  timeInfo.textContent='';
+  busy=false; sendBtn.disabled=false;
+}
+
+[0,1,2,3,4].forEach(i=>{
+  document.getElementById('q'+i).addEventListener('click',()=>runDemo(i));
+});
+sendBtn.addEventListener('click',()=>runCustom(userInput.value));
+userInput.addEventListener('keydown',e=>{if(e.key==='Enter')runCustom(userInput.value);});
+
+setTimeout(()=>runDemo(0),1200);
+</script>
+</body>
+</html>
