@@ -1,0 +1,67 @@
+TOPIC: Government Environmental Schemes, Grants, and Incentives
+SOURCE: Green Policy and Financial Incentives Guide
+
+== UNITED KINGDOM ==
+
+ENERGY & HEATING:
+- Boiler Upgrade Scheme (BUS): Grants of £7,500 toward air-source heat pumps or ground-source heat pumps; £5,000 for biomass boilers. Must use MCS-certified installer. Apply through installer.
+- Great British Insulation Scheme: Funded insulation for homes with EPC rating E, F, or G, or households on low incomes. Delivered through energy suppliers.
+- ECO4 (Energy Company Obligation 4): Free energy efficiency measures for fuel-poor and low-income households, including insulation, heat pumps, and solar panels. Apply through local council or energy supplier.
+- Home Upgrade Grant (HUG2): Grants for low-income off-gas-grid homes; covers insulation, heat pumps, solar PV. Apply through local council.
+- Smart Export Guarantee (SEG): Electricity suppliers with 150,000+ customers must offer a payment rate for surplus solar electricity exported to grid. Rates vary by supplier (3–15 p/kWh typical).
+
+TRANSPORT:
+- Electric Vehicle Homecharge Scheme (EVHS): £350 grant for home EV charger installation (available to EV owners in flats or rental accommodation).
+- Workplace Charging Scheme: Up to £350 per socket (max 40 sockets) for employers installing EV chargepoints at workplace.
+- Plug-In Grant: Currently available for electric taxis, motorcycles, wheelchair-accessible vehicles, and vans (was available for cars but ended 2022 for most categories).
+- Cycle to Work Scheme: Employer-administered, salary sacrifice scheme saving 26–40% on a new bicycle or e-bike. No cost limit as of 2019.
+- UK Infrastructure Bank & Low Carbon Transport Fund: Capital grants for local authorities developing walking, cycling, and public transit infrastructure.
+
+WASTE & CIRCULAR ECONOMY:
+- Right to Repair Regulations (2021): Manufacturers of washing machines, washer-dryers, dishwashers, TVs, fridges, and lighting must provide spare parts for 7–10 years.
+- Deposit Return Scheme (DRS): Rolling out for drinks containers (Scotland launched October 2023). England, Wales, and Northern Ireland to follow.
+- Extended Producer Responsibility (EPR) for Packaging: Producers bear full cost of packaging recycling from 2024. Incentivises switch to low-plastic, recyclable packaging.
+
+BIODIVERSITY & LAND:
+- Countryside Stewardship Scheme: Annual payments to farmers for environmental land management (hedgerows, wetlands, wildlife habitats).
+- England Woodland Creation Offer (EWCO): Grants for creating new woodlands (up to £10,200/hectare capital + annual maintenance payments).
+- Biodiversity Net Gain (BNG, 2024): All new developments in England must deliver a 10% net gain in biodiversity – creates market for habitat banks and rewilding projects.
+
+== UNITED STATES ==
+
+INFLATION REDUCTION ACT (IRA) 2022 – KEY HOME INCENTIVES:
+- Residential Clean Energy Credit: 30% tax credit for solar panels, solar water heaters, battery storage, wind, fuel cells (through 2032).
+- Energy Efficient Home Improvement Credit: Up to $3,200/year – $1,200 for insulation, windows, and doors; $2,000 for heat pumps.
+- High-Efficiency Electric Home Rebate Act (HEEHRA): Low/moderate-income households can receive rebates up to $14,000 for efficient electric appliances and upgrades.
+- EV Tax Credits: Up to $7,500 for new electric vehicles; $4,000 for used EVs (income limits apply).
+- Commercial Clean Vehicle Credit: Up to $7,500 for light commercial EVs; $40,000 for heavy vehicles.
+
+ENVIRONMENTAL PROTECTION AGENCY (EPA):
+- WaterSense: Labelling programme for water-efficient products; $700 average annual water bill savings.
+- Energy Star: Voluntary programme for energy-efficient appliances, electronics, homes, and commercial buildings.
+- National Environmental Education Act: Funds environmental education at school level.
+
+DEPARTMENT OF AGRICULTURE (USDA):
+- Conservation Reserve Program (CRP): Pays farmers to remove environmentally sensitive land from production and plant grasses/trees.
+- Environmental Quality Incentives Program (EQIP): Financial and technical help to farmers and ranchers for conservation practices.
+
+== EUROPEAN UNION ==
+
+EUROPEAN GREEN DEAL:
+- Fit for 55 package: Targets 55% reduction in GHG emissions by 2030 vs 1990 levels.
+- Renovation Wave: Doubles renovation rates of buildings; promotes deep energy retrofits.
+- EU ETS (Emissions Trading System): Carbon pricing mechanism covering power and heavy industry; aviation added, shipping from 2024.
+- Carbon Border Adjustment Mechanism (CBAM): From 2026, importers of carbon-intensive goods pay a carbon price equivalent to the EU ETS.
+
+HORIZON EUROPE:
+- Largest research and innovation funding programme; €95.5 billion (2021–2027). Significant allocation to climate, energy, and food systems research.
+
+COHESION FUNDS & STRUCTURAL FUNDS:
+- European Regional Development Fund and Cohesion Fund finance sustainable transport, energy efficiency, and green infrastructure in EU regions.
+
+== GLOBAL / INTERNATIONAL ==
+
+- Paris Agreement: 196 parties committed to limiting warming to 1.5°C above pre-industrial levels. NDCs (Nationally Determined Contributions) are reviewed every 5 years.
+- UN Sustainable Development Goals (SDGs): 17 goals including SDG 7 (Affordable & Clean Energy), SDG 11 (Sustainable Cities), SDG 12 (Responsible Consumption), SDG 13 (Climate Action), SDG 14 (Life Below Water), SDG 15 (Life on Land).
+- Green Climate Fund (GCF): Funds climate mitigation and adaptation in developing countries; $20 billion+ pledged.
+- REDD+ (Reducing Emissions from Deforestation and forest Degradation): Incentive mechanism for developing countries to reduce deforestation.

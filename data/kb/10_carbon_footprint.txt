@@ -1,0 +1,73 @@
+TOPIC: Understanding and Reducing Your Personal Carbon Footprint
+SOURCE: Climate Science and Individual Action Guide
+
+== WHAT IS A CARBON FOOTPRINT? ==
+A carbon footprint is the total greenhouse gas emissions caused by an individual, organisation, product, or event. It is expressed in tonnes of CO2 equivalent (CO2e) which accounts for all GHGs weighted by their global warming potential.
+
+AVERAGE CARBON FOOTPRINTS:
+- Global average: ~4 tonnes CO2e/year per person
+- UK average: ~8.5 tonnes CO2e/year per person (including consumption)
+- US average: ~16 tonnes CO2e/year per person
+- EU average: ~8 tonnes CO2e/year per person
+- Sustainable budget (IPCC 1.5°C pathway): ~2.5 tonnes CO2e/year per person by 2030; ~0.7 tonnes by 2050
+
+BIGGEST SOURCES OF PERSONAL CARBON FOOTPRINT (UK):
+1. Home energy (gas heating, electricity): ~25%
+2. Car travel: ~20%
+3. Flights: ~15% (higher for frequent flyers)
+4. Food and drink: ~20%
+5. Shopping and goods: ~12%
+6. Services: ~8%
+
+HIGH-IMPACT ACTIONS (in order of CO2e saved per year):
+1. Avoid one transatlantic return flight: ~1.6 tonnes CO2e saved
+2. Switch to a plant-based diet: ~1.5 tonnes CO2e saved
+3. Buy an electric car (replacing petrol): ~1.0–1.5 tonnes CO2e saved
+4. Switch to renewable electricity: ~0.5–1.5 tonnes CO2e saved (depends on grid)
+5. Install heat pump (replacing gas boiler): ~1.0–1.2 tonnes CO2e saved
+6. Car-free for one year: ~2.4 tonnes CO2e saved
+7. Have one fewer child (long-term): 58.6 tonnes CO2e/year (controversial – personal choice)
+8. Reduce food waste by 50%: ~0.2 tonnes CO2e saved
+
+MEDIUM-IMPACT ACTIONS:
+- Live car-free one day per week (replacing 1/5 car trips): ~0.5 tonnes/year
+- Reduce beef and dairy consumption by 50%: ~0.6 tonnes/year
+- Switch from gas to induction hob: ~0.1 tonnes/year
+- Buy 50% fewer new clothes: ~0.2 tonnes/year
+- Refuse one short-haul flight: ~0.3–0.8 tonnes/year
+
+LOWER-IMPACT (but still valuable) ACTIONS:
+- Recycling: ~0.1 tonnes/year
+- LED bulbs: ~0.04 tonnes/year
+- Shorter showers: ~0.05 tonnes/year
+- Avoid standby power: ~0.05 tonnes/year
+
+CARBON OFFSETTING:
+Offsetting should complement – not replace – emission reductions. Choose high-quality offsets:
+- Gold Standard (goldstandard.org): Projects verified for both carbon and sustainable development.
+- Verra VCS (Verified Carbon Standard): Widely used standard for project verification.
+- Climate, Community & Biodiversity (CCB) standards: Additional certification for co-benefits.
+- South Pole, Natural Capital Partners, and Mossy Earth offer reputable offset portfolios.
+- Price range: $10–$50 per tonne CO2e typical; $30+ for high-quality projects.
+
+Avoid: Cheap offsets from unverified tree-planting schemes that lack permanence guarantees.
+
+CARBON CALCULATORS:
+- Carbon Footprint Ltd (carbonfootprint.com): Detailed UK/global calculator.
+- WWF Carbon Footprint Calculator (footprint.wwf.org.uk): UK-focused, accessible.
+- Mike Berners-Lee's "How Bad Are Bananas?" book: Accessible guide to carbon footprints of everyday things.
+- MyClimate.org: International calculator; offers flight and event offsetting.
+
+CORPORATE AND COLLECTIVE ACTION:
+Individual action matters but systemic change is essential. Consider:
+1. Voting for climate-positive policies and candidates.
+2. Joining local environmental groups (Friends of the Earth, XR, Transition Towns).
+3. Engaging with employers to reduce workplace emissions (green travel plans, energy audits).
+4. Divesting from fossil fuel investments (banks, pension funds).
+5. Supporting climate litigation organisations (ClientEarth, Earthjustice).
+
+CLIMATE CHANGE BASICS:
+- 1.5°C of warming is the threshold for avoiding the most severe climate impacts (IPCC SR1.5, 2018).
+- We have already reached ~1.2°C of warming above pre-industrial levels (as of 2024).
+- Global emissions must halve by 2030 and reach net zero by ~2050 to stay below 1.5°C.
+- Tipping points (Amazon dieback, Greenland ice sheet collapse, permafrost thaw) could trigger irreversible cascades if crossed.

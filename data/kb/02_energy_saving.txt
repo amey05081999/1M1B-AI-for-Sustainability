@@ -1,0 +1,54 @@
+TOPIC: Home Energy Saving and Renewable Energy
+SOURCE: Energy Efficiency and Climate Action Guide
+
+== HOME ENERGY CONSUMPTION ==
+The average UK household emits about 2.7 tonnes of CO2 per year from home energy use. Heating accounts for ~60%, hot water ~16%, appliances ~15%, and lighting ~9%.
+
+HEATING & INSULATION:
+1. Install loft insulation (saves up to £315/year in the UK). Government grants often available.
+2. Add cavity wall insulation to cut heat loss by up to 35%.
+3. Draught-proof doors, windows, and letterboxes – cheap DIY fix saving ~£50/year.
+4. Install a smart or programmable thermostat; lowering temperature by 1°C saves ~10% on heating bills.
+5. Bleed radiators regularly to maintain efficiency.
+6. Use thick curtains or thermal blinds to reduce heat loss through glass.
+7. Consider a heat pump (air-source or ground-source) as a low-carbon alternative to gas boilers.
+
+HOT WATER:
+1. Fix dripping hot-water taps immediately (a dripping tap wastes ~5,500 litres/year).
+2. Install a low-flow showerhead (saves ~10 litres per minute).
+3. Keep shower time under 4 minutes – saves up to 40 litres per shower vs. a 8-minute shower.
+4. Insulate your hot water cylinder with a British Standard jacket.
+5. Set the boiler/water heater to 60°C – hot enough to kill bacteria, not wastefully hot.
+
+APPLIANCES & ELECTRONICS:
+1. Turn off appliances at the wall – standby uses up to 16% of household electricity.
+2. Use appliances during off-peak hours (late evening / early morning) if on a time-of-use tariff.
+3. Choose A+++ energy-rated appliances when replacing old ones (washers, fridges, dishwashers).
+4. Run the dishwasher and washing machine on full loads at 30°C.
+5. Air-dry clothes instead of using a tumble dryer (saves ~£70/year).
+6. Defrost the freezer regularly; ice build-up increases energy use by up to 30%.
+7. Use a smart power strip to cut vampire power from entertainment systems.
+
+LIGHTING:
+1. Replace halogen bulbs with LED equivalents – use 75% less energy and last 10x longer.
+2. Install motion sensors in hallways, bathrooms, and outside areas.
+3. Make use of natural daylight by keeping windows clean and using light-coloured interior decoration.
+
+RENEWABLE ENERGY AT HOME:
+1. Solar PV panels: A typical 4 kWp system generates ~3,400 kWh/year (UK average), covering ~80% of a household's electricity needs and saving £600–£1,000/year.
+2. Battery storage (e.g., Tesla Powerwall) stores solar energy for evening use, increasing self-consumption from ~30% to ~70%.
+3. Solar thermal panels heat water using sunlight and can meet 40–70% of annual hot water demand.
+4. Wind turbines (micro-wind) are viable in rural or exposed areas; typical domestic turbine (2.5 kW) generates ~3,000 kWh/year.
+
+GOVERNMENT SCHEMES:
+- UK Smart Export Guarantee (SEG): Energy suppliers must pay households for excess solar electricity exported to the grid.
+- UK Boiler Upgrade Scheme (BUS): Grants of £7,500 for heat pump installation.
+- UK ECO4 Scheme: Free insulation and heating upgrades for low-income and fuel-poor households.
+- US Federal Solar Tax Credit (ITC): 30% tax credit for residential solar installations through 2032.
+- US Inflation Reduction Act (IRA) 2022: Up to $2,000 tax credit for heat pumps; $1,200 for insulation; $600 for energy-efficient windows.
+- EU Renovation Wave: Targets doubling the renovation rate of buildings by 2030 with subsidies for deep retrofits.
+
+CARBON IMPACT:
+- Installing solar panels: saves ~1.3–1.5 tonnes CO2/year (UK grid).
+- LED lighting switch: saves ~40 kg CO2/year per household.
+- Lowering thermostat by 1°C: saves ~300 kg CO2/year.

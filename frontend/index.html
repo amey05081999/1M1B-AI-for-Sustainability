@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🌿 Eco Lifestyle Agent</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <!-- ── Sidebar ── -->
+  <aside id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <span class="logo-icon">🌿</span>
+        <div>
+          <div class="logo-title">EcoAgent</div>
+          <div class="logo-sub">Sustainable Living AI</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Topics I can help with</div>
+      <ul id="topicList" class="topic-list">
+        <li class="topic-loading">Loading topics…</li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Quick Questions</div>
+      <ul class="quick-list">
+        <li><button class="quick-btn" data-q="How can I reduce plastic use at home?">♻️ Reduce plastic at home</button></li>
+        <li><button class="quick-btn" data-q="What eco-friendly travel options are available?">🚲 Eco-friendly travel</button></li>
+        <li><button class="quick-btn" data-q="How can I save energy at home?">💡 Save home energy</button></li>
+        <li><button class="quick-btn" data-q="What government grants are available for going green?">🏛️ Government green grants</button></li>
+        <li><button class="quick-btn" data-q="How do I start composting at home?">🪱 Start composting</button></li>
+        <li><button class="quick-btn" data-q="What is my carbon footprint and how can I reduce it?">🌍 Reduce carbon footprint</button></li>
+        <li><button class="quick-btn" data-q="How can I make my diet more sustainable?">🥗 Sustainable diet tips</button></li>
+        <li><button class="quick-btn" data-q="How do I attract wildlife to my garden?">🦋 Wildlife gardening</button></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-footer">
+      <button id="resetBtn" class="reset-btn">🔄 New Conversation</button>
+      <div class="sidebar-info">Powered by RAG + AI</div>
+    </div>
+  </aside>
+
+  <!-- ── Main chat area ── -->
+  <main id="main">
+    <header id="topbar">
+      <button id="menuToggle" aria-label="Toggle sidebar">☰</button>
+      <div class="topbar-title">🌿 Eco Lifestyle Agent</div>
+      <div id="statusDot" class="status-dot" title="API status"></div>
+    </header>
+
+    <div id="chatWindow">
+      <!-- Welcome message -->
+      <div class="msg-row assistant" id="welcomeMsg">
+        <div class="avatar">🌿</div>
+        <div class="bubble">
+          <p>Hello! I'm <strong>EcoAgent</strong>, your personal guide to sustainable living. 🌱</p>
+          <p>Ask me anything about reducing plastic, saving energy, eco-friendly travel, recycling, sustainable food, wildlife gardening, or government green schemes.</p>
+          <p>Where would you like to start?</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="typingIndicator" class="typing-indicator hidden">
+      <div class="msg-row assistant">
+        <div class="avatar">🌿</div>
+        <div class="bubble typing">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+
+    <form id="inputForm" autocomplete="off">
+      <div class="input-wrapper">
+        <textarea
+          id="userInput"
+          placeholder="Ask about eco-friendly living… (Enter to send, Shift+Enter for new line)"
+          rows="1"
+          maxlength="2000"
+        ></textarea>
+        <button type="submit" id="sendBtn" aria-label="Send">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+      <div class="input-meta">
+        <span id="charCount">0 / 2000</span>
+        <span id="sourcesInfo"></span>
+      </div>
+    </form>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
